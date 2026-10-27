@@ -3,98 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="XM剪辑台发布与更新中心。下载 Windows 完整安装包、1.3.0 至 1.3.1 累计增量更新，查看跑量剪辑流、字幕整理、AI 配乐与使用指南。">
+  <meta name="description" content="下载 XM剪辑台完整安装包和累计增量更新包。">
   <meta name="theme-color" content="#f5f4f0">
-  <meta property="og:title" content="XM剪辑台 · 发布与更新中心">
-  <meta property="og:description" content="把剧本变成剪辑的起点。完整安装、增量更新、版本记录，一处获取。">
-  <title>XM剪辑台 — 发布与更新中心</title>
+  <title>XM剪辑台 · 下载</title>
   <link rel="icon" type="image/svg+xml" href="./assets/xm.svg">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=2">
 </head>
 <body>
-  <a class="skip-link" href="#downloads">跳到下载区</a>
-  <div class="site-shell">
-    <header class="site-header">
-      <a class="brand" href="#" aria-label="XM剪辑台首页"><img src="./assets/xm.svg" width="36" height="36" alt=""><span>XM剪辑台<span class="brand-caption">EDITING STUDIO</span></span></a>
-      <nav aria-label="主导航"><a class="current" href="#downloads">下载中心</a><a href="#features">软件功能</a><a href="#changes">更新记录</a><a href="#guide">使用指南</a></nav>
-      <a class="github-link" href="https://github.com/KDHRBm/XM-Editing-Studio" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+  <main class="download-page">
+    <header>
+      <div class="brand"><img src="./assets/xm.svg" width="38" height="38" alt=""><h1>XM剪辑台</h1></div>
+      <p>Windows 10 / 11 · 64 位</p>
     </header>
-
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="red-square"></span> XM EDITING STUDIO / RELEASE CENTER</div>
-          <h1 id="hero-title">从剧本出发，<br>让剪辑更<span class="red">顺手。</span></h1>
-          <p class="hero-description">剧本拆集、字幕整理、AI 配乐与样片水印。<br>把重复的工作交给工作台，把时间留给创作。</p>
-          <div class="platforms"><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3l7-1v7H2zm9-1 7-1v8h-7zM2 11h7v7l-7-1zm9 0h7v8l-7-1z" fill="currentColor"/></svg>Windows 10 / 11</span><span>x64</span><span>作者 / 小马</span></div>
-        </div>
-        <aside class="hero-aside" aria-label="工作流程">
-          <div class="aside-label">YOUR EDITING WORKFLOW <span>↘</span></div>
-          <ol class="workflow"><li><span>01</span><strong>导入剧本</strong><em>多集一起处理</em></li><li><span>02</span><strong>整理字幕</strong><em>中 / 英 / 西语</em></li><li><span>03</span><strong>匹配配乐</strong><em>按情节推荐音乐</em></li><li><span>04</span><strong>进入剪辑</strong><em>素材一步衔接</em></li></ol>
-          <div class="aside-foot"><span class="status-dot"></span>一个工作台，串起日常剪辑。</div>
-        </aside>
-      </section>
-
-      <section id="downloads" class="download-section" aria-labelledby="downloads-title">
-        <div class="section-heading"><div><span class="section-number">01 / DOWNLOADS</span><h2 id="downloads-title">选择你的下载方式</h2></div><div class="sync-status"><span id="sync-text" role="status">正在检查版本…</span><button id="refresh-releases" type="button" aria-label="重新检查 GitHub 版本" title="重新检查版本">↻</button></div></div>
-        <div class="package-grid">
-          <article class="package-card" id="installer-card">
-            <div class="card-strip"><span>01 / FULL INSTALLER</span><span class="badge">首次使用</span></div>
-            <div class="card-main"><div class="package-heading"><h3>完整安装包</h3><span class="package-symbol" aria-hidden="true">↧</span></div><p class="package-description">新电脑、首次使用，从这里开始。<br>包含软件与所需运行组件，安装后即可打开。</p>
-              <dl class="package-meta"><div><dt>软件版本</dt><dd id="installer-version">v1.3.1</dd></div><div><dt>发布修订</dt><dd id="installer-date">2026.10.26</dd></div><div><dt>文件大小</dt><dd id="installer-size">196.9 MB <span>/ EXE</span></dd></div></dl>
-              <p class="package-note" id="install-hint">首次安装：先安装 v1.3.1，再应用右侧增量包，获得最新修复。</p>
-              <a class="download-button" id="installer-download" href="https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.3.1/XM-Editing-Studio-1.3.1-Windows-x64-Setup.exe">下载完整安装包 <span aria-hidden="true">↓</span></a>
-              <div class="card-links"><button type="button" data-guide="install">安装说明 ↗</button><button type="button" data-checksum="installer">SHA-256 校验</button></div>
-            </div>
-          </article>
-          <article class="package-card update-card" id="incremental-card">
-            <div class="card-strip"><span>02 / CUMULATIVE UPDATE</span><span class="badge red-badge">已有软件</span></div>
-            <div class="card-main"><div class="package-heading"><h3>累计增量更新包</h3><span class="package-symbol" aria-hidden="true">↻</span></div><p class="package-description">已有 1.3.0 或 1.3.1，直接更新。<br>此前更新一次补齐，保留你的设置、历史和素材。</p>
-              <dl class="package-meta"><div><dt>更新版本</dt><dd id="incremental-version">1.3.0 / 1.3.1 → 1.3.1</dd></div><div><dt>发布修订</dt><dd id="incremental-date">2026.10.27</dd></div><div><dt>文件大小</dt><dd id="incremental-size">75.6 MB <span>/ ZIP</span></dd></div></dl>
-              <p class="package-note" id="update-hint">含 DeepSeek 改进、称谓句点与横线保留修复。</p>
-              <a class="download-button red-button" id="incremental-download" href="https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.3.1/XM-Editing-Studio-1.3.0-to-1.3.1-Incremental-20261027.zip">下载累计增量包 <span aria-hidden="true">↓</span></a>
-              <div class="card-links"><button type="button" data-guide="update">更新 / 回退说明 ↗</button><button type="button" data-checksum="incremental">SHA-256 校验</button></div>
-            </div>
-          </article>
-        </div>
-        <div class="download-toolbar"><div class="mirror-control"><span class="connection-icon" aria-hidden="true">↔</span><label for="mirror-select">下载线路</label><select id="mirror-select"><option value="official">GitHub 官方源</option><option value="ghfast">GHFast · 第三方镜像</option><option value="ghproxy">GHProxy · 第三方镜像</option></select></div><p id="mirror-note">默认连接 GitHub；访问较慢时可手动切换镜像。</p><a href="https://github.com/KDHRBm/XM-Editing-Studio/releases" target="_blank" rel="noopener noreferrer">全部历史版本 ↗</a></div>
-        <noscript><p class="no-script">JavaScript 未开启：上方官方直链仍可下载。完整安装包发布于 2026.10.26；新装后请应用 2026.10.27 增量包。<a href="https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.3.1">查看使用说明与校验文件</a>。</p></noscript>
-      </section>
-
-      <section id="features" class="content-section" aria-labelledby="features-title">
-        <div class="section-heading"><div><span class="section-number">02 / WORKSPACE</span><h2 id="features-title">日常剪辑，需要的都在这里</h2></div><p class="heading-note">从单集处理，到多集跑量。</p></div>
-        <div class="feature-grid">
-          <article><span class="feature-icon" aria-hidden="true">▤</span><div><h3>跑量剪辑流</h3><p>多集剧本联合分析，按情节拆分配乐。每集一张任务卡，字幕与推荐清晰对应。</p></div></article>
-          <article><span class="feature-icon" aria-hidden="true">Aa</span><div><h3>字幕整理与标点保留</h3><p>中、英、西语台词提取，去除角色与动作描述。复制到剪映，兼容保护英文标点。</p></div></article>
-          <article><span class="feature-icon" aria-hidden="true">♫</span><div><h3>本地配乐与 Suno 创作</h3><p>连接自己的音乐库，按剧情推荐与试听；也可定制音乐风格，生成分段配乐。</p></div></article>
-          <article><span class="feature-icon" aria-hidden="true">⌘</span><div><h3>AI 与剪映辅助工具</h3><p>DeepSeek、豆包网页与 Gemini 分析，配合 JianYing-Ai-Pro、样片水印和快捷文件夹。</p></div></article>
-        </div>
-      </section>
-
-      <section id="changes" class="content-section" aria-labelledby="changes-title">
-        <div class="section-heading"><div><span class="section-number">03 / CHANGELOG</span><h2 id="changes-title">每次更新，都向前一步</h2></div><a class="text-link" href="https://github.com/KDHRBm/XM-Editing-Studio/releases" target="_blank" rel="noopener noreferrer">GitHub 发布记录 ↗</a></div>
-        <div class="changelog-list">
-          <article class="change-row"><div class="change-date"><time datetime="2026-10-27">2026.10.27</time><span class="small-label">v1.3.1 / 增量修订</span></div><div class="change-content"><h3>保留该保留的标点，让台词更完整。<span class="tag">字幕修复</span></h3><p>称谓句点不再删除，Mr. 与人名不会被拆开；You— 的横线保留。同步包含 DeepSeek 网页读取、完整回答接回和分段容错改进。</p><button type="button" data-guide="changes">查看本次更新说明 <span aria-hidden="true">↗</span></button></div></article>
-          <article class="change-row"><div class="change-date"><time datetime="2026-10-26">2026.10.26</time><span class="small-label">v1.3.1 / 完整版本</span></div><div class="change-content"><h3>跑量剪辑流，把一整部剧本串起来。</h3><p>多集联合分析、每集多段配乐、独立任务卡；历史使用音乐单独成栏，标记和选用支持再次点击取消。优化导航与字幕复制。</p><a href="https://github.com/KDHRBm/XM-Editing-Studio/blob/v1.3.1/CHANGELOG-1.3.1.md" target="_blank" rel="noopener noreferrer">查看完整版本记录 ↗</a></div></article>
-        </div>
-      </section>
-
-      <section id="guide" class="content-section guide-section" aria-labelledby="guide-title">
-        <div class="guide-intro"><span class="section-number">04 / GET STARTED</span><h2 id="guide-title">开始之前，<br>看这几条就够了。</h2><p>下载、更新与常见问题。</p><button type="button" class="outline-button" data-guide="workflow">查看软件使用流程 ↗</button></div>
-        <div class="faq-list">
-          <details open><summary>第一次使用，应该下载哪个？<span>+</span></summary><div><p>下载左侧完整安装包。当前安装包为 10 月 26 日版，安装完成后再应用右侧 10 月 27 日增量包，即可获得最新修复。新电脑无需额外安装 Node.js 或 Python。</p></div></details>
-          <details><summary>已经装了 1.3.0 或 1.3.1，如何更新？<span>+</span></summary><div><p>保存任务并退出软件，完整解压累计增量包，运行 XM-Update-1.3.1-Incremental.exe，选择包含“小马剪辑台.exe”和 resources 的原软件目录。不要在 ZIP 内直接运行。建议预留 2 GB 空间。</p></div></details>
-          <details><summary>更新会清空配置、任务和音乐吗？<span>+</span></summary><div><p>更新器只替换程序文件，并先创建备份。你的配置、登录资料、任务历史、音乐和素材会保留。需要回退时，运行包内 Restore-Previous.cmd，选择此次更新的 delta131 备份。</p></div></details>
-          <details><summary>AI 分析和音乐生成需要什么？<span>+</span></summary><div><p>DeepSeek、豆包使用内嵌官方网页与自己的账号；Gemini 使用你配置的连接。Suno 音乐生成需有效 API 和对应额度，需要 Suno API 可联系小马获取。本地音乐推荐需要先连接自己的音乐文件夹。</p></div></details>
-          <details><summary>下载比较慢，或者需要核对文件？<span>+</span></summary><div><p>可在下载区选择备用镜像。镜像由第三方提供，可用性和速度随网络变化；下载后可点击“SHA-256 校验”核对文件。不确定时使用 GitHub 官方源。</p></div></details>
-        </div>
-      </section>
-      <div class="support-bar"><div><span class="red-square"></span><strong>需要 Suno API，可联系小马获取。</strong><p>发现问题或有功能建议，欢迎在 GitHub 留下反馈。</p></div><a href="https://github.com/KDHRBm/XM-Editing-Studio/issues" target="_blank" rel="noopener noreferrer">反馈问题 <span aria-hidden="true">↗</span></a></div>
-    </main>
-    <footer class="site-footer"><div><strong>XM剪辑台</strong><span>把时间留给创作。</span></div><div class="footer-links"><a href="https://github.com/KDHRBm/XM-Editing-Studio" target="_blank" rel="noopener noreferrer">软件源码 ↗</a><a href="https://github.com/KDHRBm/XM-Editing-Studio-Website" target="_blank" rel="noopener noreferrer">网站源码 ↗</a><a href="https://github.com/KDHRBm/XM-Editing-Studio/releases/new" target="_blank" rel="noopener noreferrer">发布管理 ↗</a></div><p class="footer-credit">界面参考 <a href="https://github.com/Kirota233/distributinon-site" target="_blank" rel="noopener noreferrer">Kirota233 / distributinon-site</a> · 下载文件由 GitHub Releases 托管。</p></footer>
-  </div>
-  <dialog id="info-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="section-number" id="dialog-category">XM / GUIDE</span><button id="close-dialog" type="button" aria-label="关闭弹窗">关闭 <span aria-hidden="true">×</span></button></div><div class="dialog-body"><h2 id="dialog-title">使用说明</h2><div id="dialog-content"></div></div></dialog>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="./app.mjs"></script>
+    <div class="packages">
+      <article class="package" id="installer-card">
+        <span class="label">首次安装</span>
+        <h2>完整安装包</h2>
+        <p class="description">新电脑、第一次使用，下载这个。</p>
+        <div class="version"><strong id="installer-version">v1.3.1</strong><span id="installer-size">196.9 MB · EXE</span></div>
+        <p class="date" id="installer-date">2026.10.26</p>
+        <p class="note" id="install-hint">安装后再应用增量包，获得最新修复。</p>
+        <a class="download" id="installer-download" href="https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.3.1/XM-Editing-Studio-1.3.1-Windows-x64-Setup.exe">下载完整安装包 <span aria-hidden="true">↓</span></a>
+      </article>
+      <article class="package update" id="incremental-card">
+        <span class="label">已有软件</span>
+        <h2>累计增量更新包</h2>
+        <p class="description" id="update-description">适用于已有 1.3.0 或 1.3.1 的用户。</p>
+        <div class="version"><strong id="incremental-version">更新至 v1.3.1</strong><span id="incremental-size">75.6 MB · ZIP</span></div>
+        <p class="date" id="incremental-date">2026.10.27</p>
+        <p class="note">退出软件，解压后运行包内更新器。</p>
+        <a class="download" id="incremental-download" href="https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.3.1/XM-Editing-Studio-1.3.0-to-1.3.1-Incremental-20261027.zip">下载累计增量包 <span aria-hidden="true">↓</span></a>
+      </article>
+    </div>
+  </main>
+  <script type="module" src="./app.mjs?v=2"></script>
 </body>
 </html>
