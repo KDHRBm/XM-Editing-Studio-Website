@@ -50,6 +50,7 @@ test('new small patches update only the incremental column and a later installer
   const installer=release('1.4.2','installer'),patch=release('1.4.3','incremental');
   let downloads=selectDownloads([installer,patch]);
   assert.equal(downloads.installer.version,'1.4.2');assert.equal(downloads.incremental.version,'1.4.3');
+  assert.equal(incrementalHint({...downloads.incremental,fromVersion:'1.4.2',version:'1.4.4'}),'适用于原版 1.4.2 至 1.4.4。');
   const small=release('1.4.4','incremental');small.assets[0].name='XM-Editing-Studio-1.4.4-Small-Update.zip';
   small.assets[0].browser_download_url=`https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.4.4/${small.assets[0].name}`;
   downloads=selectDownloads([small,installer,patch]);

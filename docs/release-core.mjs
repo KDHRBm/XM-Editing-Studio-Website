@@ -57,7 +57,7 @@ export function downloadUrl(asset, mirror = 'official') {
 }
 export const formatSize = bytes => `${(bytes / 1000000).toFixed(1)} MB`;
 export const formatDate = value => new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value)).replaceAll('/', '.');
-export const incrementalHint = asset => asset?.fromVersion ? `适用于原版 ${asset.fromVersion} 或 ${asset.version}。` : '适用版本请查看包内更新说明。';
+export const incrementalHint = asset => asset?.fromVersion ? `适用于原版 ${asset.fromVersion}${asset.fromVersion === asset.version ? '' : ` 至 ${asset.version}`}。` : '适用版本请查看包内更新说明。';
 
 export function installationHint(downloads) {
   const { installer, incremental } = downloads;
