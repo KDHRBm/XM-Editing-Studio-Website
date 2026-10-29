@@ -1,5 +1,5 @@
-import snapshot from './release-snapshot.mjs';
-import { RELEASES_API, selectDownloads, downloadUrl, formatDate, formatSize, installationHint } from './release-core.mjs';
+import snapshot from './release-snapshot.mjs?v=143-20261029';
+import { RELEASES_API, selectDownloads, downloadUrl, formatDate, formatSize, installationHint, incrementalHint } from './release-core.mjs?v=3';
 
 const $ = selector => document.querySelector(selector);
 function render(downloads) {
@@ -13,7 +13,7 @@ function render(downloads) {
   }
   const hint = installationHint(downloads);
   $('#install-hint').textContent = hint.includes('再应用') ? '安装后再应用增量包，获得最新修复。' : '按安装器引导完成安装。';
-  if (downloads.incremental) $('#update-description').textContent = `适用于已有 ${downloads.incremental.fromVersion} 或 ${downloads.incremental.version} 的用户。`;
+  if (downloads.incremental) $('#update-description').textContent = incrementalHint(downloads.incremental);
 }
 
 render(snapshot.downloads);
@@ -21,7 +21,7 @@ render(snapshot.downloads);
 async function refresh() {
   const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 8000);
   try {
-    const response = await fetch(RELEASES_API, { headers: { Accept: 'application/vnd.github+json' }, signal: controller.signal });
+    const response = await fetch(RELEASES_API, { headers: { Accept: 'application/vnd.github+json' }, cache:'no-store', signal: controller.signal });
     if (!response.ok) return;
     const next = selectDownloads(await response.json());
     if (next.installer && next.incremental) render(next);

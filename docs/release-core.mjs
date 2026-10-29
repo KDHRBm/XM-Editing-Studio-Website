@@ -10,6 +10,7 @@ export const MIRRORS = Object.freeze({
 const VERSION = /^v?(\d+)\.(\d+)\.(\d+)$/;
 const INSTALLER = /^XM-Editing-Studio-(\d+\.\d+\.\d+)-Windows-x64-Setup\.exe$/;
 const INCREMENTAL = /^XM-Editing-Studio-(\d+\.\d+\.\d+)-to-(\d+\.\d+\.\d+)-Incremental-(\d{8})\.zip$/;
+const SMALL_UPDATE = /^XM-Editing-Studio-(\d+\.\d+\.\d+)-Small-Update\.zip$/;
 
 export function officialAsset(url, name) {
   try {
@@ -35,9 +36,9 @@ export function selectDownloads(releases) {
     const version = release.tag_name.replace(/^v/, '');
     for (const asset of release.assets) {
       if (!asset || typeof asset.name !== 'string' || (asset.state && asset.state !== 'uploaded') || !Number.isSafeInteger(asset.size) || asset.size <= 0 || !officialAsset(asset.browser_download_url, asset.name)) continue;
-      const full = asset.name.match(INSTALLER), patch = asset.name.match(INCREMENTAL);
-      const type = full ? 'installer' : patch ? 'incremental' : null;
-      if (!type || (full ? full[1] : patch[2]) !== version) continue;
+      const full = asset.name.match(INSTALLER), patch = asset.name.match(INCREMENTAL), small = asset.name.match(SMALL_UPDATE);
+      const type = full ? 'installer' : patch || small ? 'incremental' : null;
+      if (!type || (full ? full[1] : patch ? patch[2] : small[1]) !== version) continue;
       const urlTag = decodeURIComponent(new URL(asset.browser_download_url).pathname.split('/').at(-2));
       if (urlTag !== release.tag_name) continue;
       const date = asset.updated_at || release.published_at;
@@ -56,9 +57,10 @@ export function downloadUrl(asset, mirror = 'official') {
 }
 export const formatSize = bytes => `${(bytes / 1000000).toFixed(1)} MB`;
 export const formatDate = value => new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value)).replaceAll('/', '.');
+export const incrementalHint = asset => asset?.fromVersion ? `适用于原版 ${asset.fromVersion} 或 ${asset.version}。` : '适用版本请查看包内更新说明。';
 
 export function installationHint(downloads) {
   const { installer, incremental } = downloads;
-  if (installer && incremental && compareVersions(incremental.version, installer.version) >= 0 && Date.parse(incremental.date) > Date.parse(installer.date)) return `首次安装：先安装 v${installer.version}，再应用右侧增量包，获得最新修复。`;
+  if (installer && incremental && (compareVersions(incremental.version, installer.version) > 0 || compareVersions(incremental.version, installer.version) === 0 && Date.parse(incremental.date) > Date.parse(installer.date))) return `首次安装：先安装 v${installer.version}，再应用右侧增量包，获得最新修复。`;
   return installer ? `首次安装：下载 v${installer.version} 完整安装包，按引导完成安装。` : '请选择下方适合现有版本的更新包。';
 }

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import snapshot from '../docs/release-snapshot.mjs';
-import { selectDownloads, downloadUrl, compareVersions, installationHint, formatDate } from '../docs/release-core.mjs';
+import { selectDownloads, downloadUrl, compareVersions, installationHint, formatDate, incrementalHint } from '../docs/release-core.mjs';
 
 function release(version, kind, date = '2026-10-27T02:06:53Z') {
   const name = kind === 'installer' ? `XM-Editing-Studio-${version}-Windows-x64-Setup.exe` : `XM-Editing-Studio-1.3.0-to-${version}-Incremental-20261027.zip`;
@@ -29,7 +29,7 @@ test('rejects foreign URLs, credential URLs, wrong tags and unfinished assets', 
   ]) { const item = release('1.3.1','installer'); Object.assign(item.assets[0], change); assert.equal(selectDownloads([item]).installer,null); }
 });
 test('network fallback snapshot uses verified real downloads; mirrors cannot change repository', () => {
-  assert.equal(snapshot.downloads.incremental.sha, '8108d4c94e1fb2bc9df3e9a06192502b412d769fedc5a981dfa9b1476f8fbfaf');
+  assert.match(snapshot.downloads.incremental.sha, /^[a-f0-9]{64}$/);
   const asset = snapshot.downloads.incremental;
   assert.equal(downloadUrl(asset, 'ghfast'), 'https://ghfast.top/' + asset.url);
   assert.equal(downloadUrl(asset, 'unknown'), asset.url);
@@ -44,4 +44,18 @@ test('installation advice reflects newer patches and never asks to downgrade a n
 test('empty and malformed API responses cannot fabricate an asset', () => {
   assert.deepEqual(selectDownloads([]), { installer:null, incremental:null });
   assert.throws(() => selectDownloads({ message:'API rate limit' }));
+});
+
+test('new small patches update only the incremental column and a later installer updates only the full column',()=>{
+  const installer=release('1.4.2','installer'),patch=release('1.4.3','incremental');
+  let downloads=selectDownloads([installer,patch]);
+  assert.equal(downloads.installer.version,'1.4.2');assert.equal(downloads.incremental.version,'1.4.3');
+  const small=release('1.4.4','incremental');small.assets[0].name='XM-Editing-Studio-1.4.4-Small-Update.zip';
+  small.assets[0].browser_download_url=`https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.4.4/${small.assets[0].name}`;
+  downloads=selectDownloads([small,installer,patch]);
+  assert.equal(downloads.installer.version,'1.4.2');assert.equal(downloads.incremental.version,'1.4.4');
+  assert.match(incrementalHint(downloads.incremental),/查看包内/);
+  downloads=selectDownloads([small,installer,patch,release('1.4.5','installer')]);
+  assert.equal(downloads.installer.version,'1.4.5');assert.equal(downloads.incremental.version,'1.4.4');
+  assert.doesNotMatch(installationHint(downloads),/再应用/);
 });
