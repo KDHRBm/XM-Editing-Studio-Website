@@ -28,3 +28,7 @@ npm test
 上传新版本后，页面访问时会自动读取。执行 `npm run sync` 可同步更新 `docs/release-snapshot.mjs` 和 `docs/index.html` 中的离线快照与无 JavaScript 下载链接，提交后由 GitHub Pages 部署。不得把增量 ZIP 放进全量包栏，也不得用增量版本号改写完整安装包版本。
 
 界面参考 [Kirota233/distributinon-site](https://github.com/Kirota233/distributinon-site) 的白底黑线与红色卡片风格，独立实现。网站源码采用 MIT 许可证。
+
+## 桌面程序更新清单
+
+1.4.6 起，软件启动与右上角按钮读取本站 update.json。执行 npm run sync 会同时生成页面快照和该 JSON，包含全量、增量两类包的版本、最低适用版本、下载地址、大小和 SHA-256。下载仍使用官方 GitHub Release 附件，软件优先选择适用的增量包。

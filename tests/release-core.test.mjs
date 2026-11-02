@@ -1,12 +1,21 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import snapshot from '../docs/release-snapshot.mjs';
-import { selectDownloads, downloadUrl, compareVersions, installationHint, formatDate, incrementalHint } from '../docs/release-core.mjs';
+import { selectDownloads, downloadUrl, compareVersions, installationHint, formatDate, incrementalHint, createUpdateFeed } from '../docs/release-core.mjs';
 
 function release(version, kind, date = '2026-10-27T02:06:53Z') {
   const name = kind === 'installer' ? `XM-Editing-Studio-${version}-Windows-x64-Setup.exe` : `XM-Editing-Studio-1.3.0-to-${version}-Incremental-20261027.zip`;
   return { tag_name: `v${version}`, published_at: date, assets: [{ name, state: 'uploaded', browser_download_url: `https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v${version}/${name}`, size: 12345, updated_at: date, digest: 'sha256:' + 'a'.repeat(64) }] };
 }
+test('desktop update feed shares the two published downloads and requires hashes and compatibility', () => {
+  const downloads = selectDownloads([release('1.4.2', 'installer'), release('1.4.6', 'incremental')]);
+  const feed = createUpdateFeed(downloads);
+  assert.equal(feed.schemaVersion, 1); assert.deepEqual(feed.downloads, downloads);
+  assert.equal(feed.downloads.incremental.version, '1.4.6');
+  assert.throws(() => createUpdateFeed({ ...downloads, incremental: { ...downloads.incremental, sha: '' } }), /SHA-256/);
+  assert.throws(() => createUpdateFeed({ ...downloads, incremental: { ...downloads.incremental, fromVersion: '' } }), /适用版本/);
+  assert.throws(() => createUpdateFeed({ installer: null, incremental: null }));
+});
 test('installer and incremental files are selected independently, never confuse full update or source ZIP', () => {
   const older = release('1.3.0', 'installer'), next = release('1.3.1', 'installer'), patch = release('1.3.1', 'incremental');
   next.assets.push({ ...patch.assets[0], name: 'XM-Editing-Studio-1.3.1-Full-Update.zip' });

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T05:18:53.565Z",
+  "downloads": {
+    "installer": {
+      "type": "installer",
+      "version": "1.4.2",
+      "fromVersion": "",
+      "revision": "",
+      "name": "XM-Editing-Studio-1.4.2-Windows-x64-Setup.exe",
+      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.4.2/XM-Editing-Studio-1.4.2-Windows-x64-Setup.exe",
+      "size": 564039476,
+      "date": "2026-10-29T04:50:55Z",
+      "sha": "84098f92fd06ee7bccf8d7dc422316d6e00f44fc2f0e3d062d2c9232e9ff69ff",
+      "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.4.2"
+    },
+    "incremental": {
+      "type": "incremental",
+      "version": "1.4.6",
+      "fromVersion": "1.4.2",
+      "revision": "20261102",
+      "name": "XM-Editing-Studio-1.4.2-to-1.4.6-Incremental-20261102.zip",
+      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.4.6/XM-Editing-Studio-1.4.2-to-1.4.6-Incremental-20261102.zip",
+      "size": 1492322,
+      "date": "2026-11-02T05:18:29Z",
+      "sha": "327bb2c7a05c69f7553aa236a7dda333b9f290fe4790be11c9e68bbf5b20dc83",
+      "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.4.6"
+    }
+  }
+}

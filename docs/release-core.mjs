@@ -55,6 +55,15 @@ export function downloadUrl(asset, mirror = 'official') {
   if (!asset || !officialAsset(asset.url, asset.name)) throw new Error('下载地址不正确');
   return (MIRRORS[mirror] || MIRRORS.official).prefix + asset.url;
 }
+export function createUpdateFeed(downloads, generatedAt = new Date().toISOString()) {
+  if (!downloads.installer && !downloads.incremental) throw new Error('更新清单至少需要一个发布包');
+  for (const [type, asset] of Object.entries(downloads)) {
+    if (!asset) continue;
+    if (!['installer', 'incremental'].includes(type) || asset.type !== type || !VERSION.test(asset.version) || !officialAsset(asset.url, asset.name) || !/^[a-f0-9]{64}$/i.test(asset.sha || '') || !Number.isSafeInteger(asset.size) || asset.size <= 0) throw new Error('更新包缺少有效地址、大小或 SHA-256');
+    if (type === 'incremental' && (!VERSION.test(asset.fromVersion) || compareVersions(asset.fromVersion, asset.version) > 0)) throw new Error('增量包必须明确最低适用版本');
+  }
+  return { schemaVersion: 1, generatedAt, downloads };
+}
 export const formatSize = bytes => `${(bytes / 1000000).toFixed(1)} MB`;
 export const formatDate = value => new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value)).replaceAll('/', '.');
 export const incrementalHint = asset => asset?.fromVersion ? `适用于原版 ${asset.fromVersion}${asset.fromVersion === asset.version ? '' : ` 至 ${asset.version}`}。` : '适用版本请查看包内更新说明。';
