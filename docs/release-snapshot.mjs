@@ -1,6 +1,6 @@
 // Verified public GitHub release metadata; no credentials.
 export default {
-  "verifiedAt": "2026-11-02T05:18:53.565Z",
+  "verifiedAt": "2026-11-02T06:56:46.987Z",
   "downloads": {
     "installer": {
       "type": "installer",
@@ -21,9 +21,9 @@ export default {
       "revision": "20261102",
       "name": "XM-Editing-Studio-1.4.2-to-1.4.6-Incremental-20261102.zip",
       "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.4.6/XM-Editing-Studio-1.4.2-to-1.4.6-Incremental-20261102.zip",
-      "size": 1492322,
-      "date": "2026-11-02T05:18:29Z",
-      "sha": "327bb2c7a05c69f7553aa236a7dda333b9f290fe4790be11c9e68bbf5b20dc83",
+      "size": 1492719,
+      "date": "2026-11-02T06:56:12Z",
+      "sha": "721fa76d390708798d0a4d85b682f3dcaee88e2eb2056a6bca2a6fe6dfaf2f23",
       "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.4.6"
     }
   }
