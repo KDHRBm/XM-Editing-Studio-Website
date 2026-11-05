@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { RELEASES_API, selectDownloads, formatDate, formatSize, installationHint, incrementalHint, createUpdateFeed } from '../docs/release-core.mjs';
+import { RELEASES_API, selectDownloads, downloadUrl, formatDate, formatSize, installationHint, incrementalHint, createUpdateFeed } from '../docs/release-core.mjs';
 const input = process.argv[2];
 let releases;
 if (input) releases = JSON.parse((await fs.readFile(input, 'utf8')).replace(/^\ufeff/, ''));
@@ -23,7 +23,7 @@ for(const type of ['installer','incremental']) {
   text(type+'-version',(type==='installer'?'v':'更新至 v')+asset.version);
   text(type+'-size',formatSize(asset.size)+(type==='installer'?' · EXE':' · ZIP'));
   text(type+'-date',formatDate(asset.date));
-  html=html.replace(new RegExp(`(id="${type}-download" href=")[^"]*(")`),(_,start,end)=>start+escape(asset.url)+end);
+  html=html.replace(new RegExp(`(id="${type}-download" href=")[^"]*(")`),(_,start,end)=>start+escape(downloadUrl(asset))+end);
 }
 text('install-hint',installationHint(downloads).includes('再应用')?'安装后再应用增量包，获得最新修复。':'按安装器引导完成安装。');
 text('update-description',incrementalHint(downloads.incremental));

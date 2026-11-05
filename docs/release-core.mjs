@@ -4,7 +4,7 @@ export const RELEASES_API = `https://api.github.com/repos/${REPO}/releases?per_p
 export const MIRRORS = Object.freeze({
   official: { label: 'GitHub 官方源', prefix: '' },
   ghfast: { label: 'GHFast · 第三方镜像', prefix: 'https://ghfast.top/' },
-  ghproxy: { label: 'GHProxy · 第三方镜像', prefix: 'https://ghproxy.net/' },
+  ghproxy: { label: 'GHProxy · 第三方镜像', prefix: 'https://gh-proxy.com/' },
 });
 
 const VERSION = /^v?(\d+)\.(\d+)\.(\d+)$/;
@@ -51,7 +51,7 @@ export function selectDownloads(releases) {
   return { installer: newest(candidates.installer), incremental: newest(candidates.incremental) };
 }
 
-export function downloadUrl(asset, mirror = 'official') {
+export function downloadUrl(asset, mirror = 'ghproxy') {
   if (!asset || !officialAsset(asset.url, asset.name)) throw new Error('下载地址不正确');
   return (MIRRORS[mirror] || MIRRORS.official).prefix + asset.url;
 }
@@ -70,6 +70,6 @@ export const incrementalHint = asset => asset?.fromVersion ? `适用于原版 ${
 
 export function installationHint(downloads) {
   const { installer, incremental } = downloads;
-  if (installer && incremental && (compareVersions(incremental.version, installer.version) > 0 || compareVersions(incremental.version, installer.version) === 0 && Date.parse(incremental.date) > Date.parse(installer.date))) return `首次安装：先安装 v${installer.version}，再应用右侧增量包，获得最新修复。`;
+  if (installer && incremental && compareVersions(incremental.version, installer.version) > 0 && compareVersions(installer.version, incremental.fromVersion) >= 0) return `首次安装：先安装 v${installer.version}，再应用右侧增量包，获得最新修复。`;
   return installer ? `首次安装：下载 v${installer.version} 完整安装包，按引导完成安装。` : '请选择下方适合现有版本的更新包。';
 }

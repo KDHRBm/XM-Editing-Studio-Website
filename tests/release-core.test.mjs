@@ -41,11 +41,13 @@ test('network fallback snapshot uses verified real downloads; mirrors cannot cha
   assert.match(snapshot.downloads.incremental.sha, /^[a-f0-9]{64}$/);
   const asset = snapshot.downloads.incremental;
   assert.equal(downloadUrl(asset, 'ghfast'), 'https://ghfast.top/' + asset.url);
+  assert.equal(downloadUrl(asset), 'https://gh-proxy.com/' + asset.url);
   assert.equal(downloadUrl(asset, 'unknown'), asset.url);
   assert.throws(() => downloadUrl({ ...asset, url: 'https://example.org/bad.zip' }));
 });
 test('installation advice reflects newer patches and never asks to downgrade a new installer', () => {
-  assert.match(installationHint(snapshot.downloads), /再应用/);
+  assert.doesNotMatch(installationHint(snapshot.downloads), /再应用/);
+  assert.match(installationHint({installer:{version:'1.4.7'},incremental:{version:'1.4.9',fromVersion:'1.4.7'}}),/再应用/);
   const next = selectDownloads([release('1.4.0','installer'), release('1.3.1','incremental')]);
   assert.doesNotMatch(installationHint(next), /再应用/);
   assert.equal(formatDate('2026-10-26T20:00:00Z'), '2026.10.27');
@@ -68,4 +70,5 @@ test('new small patches update only the incremental column and a later installer
   downloads=selectDownloads([small,installer,patch,release('1.4.5','installer')]);
   assert.equal(downloads.installer.version,'1.4.5');assert.equal(downloads.incremental.version,'1.4.4');
   assert.doesNotMatch(installationHint(downloads),/再应用/);
+  assert.doesNotMatch(installationHint({installer:{version:'1.4.9'},incremental:{version:'1.4.9',fromVersion:'1.4.7'}}),/再应用/);
 });
