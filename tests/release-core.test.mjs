@@ -46,7 +46,7 @@ test('network fallback snapshot uses verified real downloads; mirrors cannot cha
   assert.throws(() => downloadUrl({ ...asset, url: 'https://example.org/bad.zip' }));
 });
 test('installation advice reflects newer patches and never asks to downgrade a new installer', () => {
-  assert.doesNotMatch(installationHint(snapshot.downloads), /再应用/);
+  assert.match(installationHint(snapshot.downloads), /先安装 v1\.4\.9，再应用右侧增量包/);
   assert.match(installationHint({installer:{version:'1.4.7'},incremental:{version:'1.4.9',fromVersion:'1.4.7'}}),/再应用/);
   const next = selectDownloads([release('1.4.0','installer'), release('1.3.1','incremental')]);
   assert.doesNotMatch(installationHint(next), /再应用/);
