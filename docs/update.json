@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T08:23:09.264Z",
+  "generatedAt": "2026-11-09T02:29:25.934Z",
   "downloads": {
     "installer": {
       "type": "installer",
@@ -18,12 +18,12 @@
       "type": "incremental",
       "version": "1.5.0",
       "fromVersion": "1.4.9",
-      "revision": "20261106",
-      "name": "XM-Editing-Studio-1.4.9-to-1.5.0-Incremental-20261106.zip",
-      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.5.0/XM-Editing-Studio-1.4.9-to-1.5.0-Incremental-20261106.zip",
-      "size": 2284218,
-      "date": "2026-11-06T08:18:37Z",
-      "sha": "23fdd7a5bbfaec250261bc2c84effaebef59fe5692383862262d3969a3136ba1",
+      "revision": "20261109",
+      "name": "XM-Editing-Studio-1.4.9-to-1.5.0-Incremental-20261109.zip",
+      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.5.0/XM-Editing-Studio-1.4.9-to-1.5.0-Incremental-20261109.zip",
+      "size": 2284654,
+      "date": "2026-11-09T02:26:04Z",
+      "sha": "91bd1e56186b3d8008f36b347819e08798ea31be59fc1d7c718e39673702f31e",
       "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.5.0"
     }
   }
