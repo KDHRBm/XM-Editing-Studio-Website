@@ -1,5 +1,5 @@
-import snapshot from './release-snapshot.mjs?v=150-20261106';
-import { RELEASES_API, selectDownloads, downloadUrl, formatDate, formatSize, installationHint, incrementalHint } from './release-core.mjs?v=150-20261106';
+import snapshot from './release-snapshot.mjs?v=160-20261111';
+import { RELEASES_API, selectDownloads, downloadUrl, formatDate, formatSize, installationHint, incrementalHint } from './release-core.mjs?v=160-20261111';
 
 const $ = selector => document.querySelector(selector);
 function render(downloads) {
@@ -11,8 +11,7 @@ function render(downloads) {
     $(`#${type}-size`).textContent = `${formatSize(asset.size)} · ${type === 'installer' ? 'EXE' : 'ZIP'}`;
     $(`#${type}-download`).href = downloadUrl(asset);
   }
-  const hint = installationHint(downloads);
-  $('#install-hint').textContent = hint.includes('再应用') ? '安装后再应用增量包，获得最新修复。' : '按安装器引导完成安装。';
+  $('#install-hint').textContent = installationHint(downloads);
   if (downloads.incremental) $('#update-description').textContent = incrementalHint(downloads.incremental);
 }
 

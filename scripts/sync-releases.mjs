@@ -25,7 +25,7 @@ for(const type of ['installer','incremental']) {
   text(type+'-date',formatDate(asset.date));
   html=html.replace(new RegExp(`(id="${type}-download" href=")[^"]*(")`),(_,start,end)=>start+escape(downloadUrl(asset))+end);
 }
-text('install-hint',installationHint(downloads).includes('再应用')?'安装后再应用增量包，获得最新修复。':'按安装器引导完成安装。');
+text('install-hint',installationHint(downloads));
 text('update-description',incrementalHint(downloads.incremental));
 await fs.writeFile(htmlFile,html);
 console.log(JSON.stringify(downloads, null, 2));

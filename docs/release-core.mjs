@@ -70,6 +70,9 @@ export const incrementalHint = asset => asset?.fromVersion ? `适用于原版 ${
 
 export function installationHint(downloads) {
   const { installer, incremental } = downloads;
-  if (installer && incremental && compareVersions(incremental.version, installer.version) > 0 && compareVersions(installer.version, incremental.fromVersion) >= 0) return `首次安装：先安装 v${installer.version}，再应用右侧增量包，获得最新修复。`;
+  if (installer && incremental && compareVersions(incremental.version, installer.version) > 0) {
+    if (compareVersions(installer.version, incremental.fromVersion) >= 0) return `首次安装：先安装 v${installer.version}，再应用右侧增量包，获得最新修复。`;
+    return `首次安装：先安装 v${installer.version}，再升级到 v${incremental.fromVersion}，才能应用右侧增量包。`;
+  }
   return installer ? `首次安装：下载 v${installer.version} 完整安装包，按引导完成安装。` : '请选择下方适合现有版本的更新包。';
 }
