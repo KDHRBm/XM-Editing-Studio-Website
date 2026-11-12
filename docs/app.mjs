@@ -1,5 +1,5 @@
-import snapshot from './release-snapshot.mjs?v=161-20261112';
-import { RELEASES_API, selectDownloads, downloadUrl, formatDate, formatSize, installationHint, incrementalHint } from './release-core.mjs?v=161-20261112';
+import snapshot from './release-snapshot.mjs?v=161-full-20261112';
+import { RELEASES_API, selectDownloads, downloadUrl, formatDate, formatSize, installationHint, incrementalHint } from './release-core.mjs?v=161-full-20261112';
 
 const $ = selector => document.querySelector(selector);
 function render(downloads) {
