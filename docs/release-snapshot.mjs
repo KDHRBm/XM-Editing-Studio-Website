@@ -1,30 +1,30 @@
 // Verified public GitHub release metadata; no credentials.
 export default {
-  "verifiedAt": "2026-11-17T10:21:45.535Z",
+  "verifiedAt": "2026-11-18T10:52:40.382Z",
   "downloads": {
     "installer": {
       "type": "installer",
-      "version": "1.6.4",
+      "version": "1.6.5",
       "fromVersion": "",
       "revision": "",
-      "name": "XM-Editing-Studio-1.6.4-Windows-x64-Setup.exe",
-      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.6.4/XM-Editing-Studio-1.6.4-Windows-x64-Setup.exe",
-      "size": 62222650,
-      "date": "2026-11-17T10:21:17Z",
-      "sha": "0a1d9b2ae3362c230c89b1302fee94d0e45d60444f0b1cbd13b0746098343882",
-      "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.6.4"
+      "name": "XM-Editing-Studio-1.6.5-Windows-x64-Setup.exe",
+      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.6.5/XM-Editing-Studio-1.6.5-Windows-x64-Setup.exe",
+      "size": 62232957,
+      "date": "2026-11-18T10:50:05Z",
+      "sha": "7da9bda4ad2b978f8e31465f4ce1d8e1f85653a4f48cf5bfed471474e98eae1c",
+      "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.6.5"
     },
     "incremental": {
       "type": "incremental",
-      "version": "1.6.4",
+      "version": "1.6.5",
       "fromVersion": "1.6.1",
-      "revision": "20261117",
-      "name": "XM-Editing-Studio-1.6.1-to-1.6.4-Incremental-20261117.zip",
-      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.6.4/XM-Editing-Studio-1.6.1-to-1.6.4-Incremental-20261117.zip",
-      "size": 582662,
-      "date": "2026-11-17T10:20:56Z",
-      "sha": "39141f642ef046be1122b8fe8f22d07da27d586fe8e79b8fd0e4b8a03d494852",
-      "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.6.4"
+      "revision": "20261118",
+      "name": "XM-Editing-Studio-1.6.1-to-1.6.5-Incremental-20261118.zip",
+      "url": "https://github.com/KDHRBm/XM-Editing-Studio/releases/download/v1.6.5/XM-Editing-Studio-1.6.1-to-1.6.5-Incremental-20261118.zip",
+      "size": 591870,
+      "date": "2026-11-18T10:50:00Z",
+      "sha": "1fc2673c938d31a3880b7edf18d9dc9e83daee8f48763a2af4d7ec14e9f7b523",
+      "releaseUrl": "https://github.com/KDHRBm/XM-Editing-Studio/releases/tag/v1.6.5"
     }
   }
 };
